@@ -1,4 +1,5 @@
 // https://www.geeksforgeeks.org/write-a-c-program-to-calculate-powxn/
+// T.C => log(n)
 
 #include        <bits/stdc++.h>
 #include        <ext/pb_ds/assoc_container.hpp>
@@ -28,7 +29,6 @@ void file() {
 #endif
 }
 
-// T.C => log(n)
 ll solve(ll x, ll y) {
 	if (y == 0) return 1;
 	if (x == 0) return 0;
