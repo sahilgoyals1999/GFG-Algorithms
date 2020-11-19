@@ -1,5 +1,5 @@
 // https://practice.geeksforgeeks.org/problems/subsequence-matching/0#
-// T.C => O(n)
+// T.C => O(m*(n-m+1))
 
 #include        <bits/stdc++.h>
 #include        <ext/pb_ds/assoc_container.hpp>
@@ -29,21 +29,28 @@ void file() {
 #endif
 }
 
+void search(string pat, string txt) {
+	int n = txt.length();
+	int m = pat.length();
+	// A loop to slide pat[] one by one
+	for (int i = 0; i <= n - m; ++i) {
+		int j = 0;
+		// For current index i, check for pattern match
+		while (j < m) {
+			if (txt[i + j] != pat[j])  break;
+			++j;
+		}
+		if (j == m) cout << "Pattern found at index " << i << "\n";
+	}
+}
+
 int main() {
 	FIO
 	file();
 	w(t) {
-		string s;
-		cin >> s;
-		int n = s.length(), i = 0;
-		while (i < n) {
-			if (i + 2 < n && s[i] == 'R' && s[i + 1] == 'Y' && s[i + 2] == 'Y') i += 3;
-			else if (i + 1 < n && s[i] == 'R' && s[i + 1] == 'Y') i += 2;
-			else if (s[i] == 'R') ++i;
-			else break;
-		}
-		if (i == n) cout << "YES\n";
-		else cout << "NO\n";
+		string txt, pat;
+		cin >> txt >> pat;
+		search(pat, txt);
 	}
 	return 0;
 }
