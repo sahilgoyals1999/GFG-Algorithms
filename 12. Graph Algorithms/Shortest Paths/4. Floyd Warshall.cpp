@@ -32,10 +32,11 @@ void file() {
 #endif
 }
 
+// traverse for all nodes as intermediate node
+// (i <--> k <--> j)
+// if (i --> j) is shorter then (i --> k --> j) then update it
+
 void floydWarshall(int n, vector<vector<int> > &g, vector<vector<int> > &dist) {
-	// traverse for all nodes as intermediate node
-	// (i <--> k <--> j)
-	// if (i --> j) is shorter then (i --> k --> j) then update it
 	for (int k = 0; k < n; ++k) {
 		for (int i = 0; i < n; ++i) {
 			for (int j = 0; j < n; ++j) {
@@ -53,8 +54,7 @@ int main() {
 	w(t) {
 		int n;
 		cin >> n;
-		// adjacency matrix
-		// 0-based;
+		// adjacency matrix , 0-based
 		vector<vector<int> > g(n, vector<int>(n));
 		vector<vector<int> > dist(n, vector<int>(n));
 		for (int i = 0; i < n; ++i) {
